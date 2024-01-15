@@ -17,6 +17,7 @@ repositories {
 
 test {
     useTestNG() {
-        suites "src/test/resources/Homework19.xml"
+//        suites "src/test/resources/Homework19.xml"
+        suites "src/test/resources/TestNG.xml"
     }
 }

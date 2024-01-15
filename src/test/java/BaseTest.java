@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,6 +17,8 @@ import java.time.Duration;
 public class BaseTest {
 
     public WebDriver driver;
+    public WebDriverWait wait;
+
     public Actions actions;
 //Test
     @BeforeSuite
@@ -31,7 +34,9 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
         // Manage browser - wait for 10 seconds before failing/quitting
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+
+        actions = new Actions(driver);
         driver.manage().window().maximize();
 
         driver.get(BaseURL);
@@ -83,6 +88,12 @@ public class BaseTest {
         }catch(Exception e){
             System.out.println("Something went wrong!! -> " + e);
         }
+    }
+
+    public void loginToKoel(){
+        provideEmail("utku.aktas94@testpro.io");
+        providePassword("ekga9uf6");
+        clickSubmit();
     }
 
 
