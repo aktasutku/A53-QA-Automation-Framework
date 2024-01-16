@@ -10,10 +10,12 @@ import java.sql.SQLOutput;
 //@author: Utku Aktas
 //
 public class LoginTests extends BaseTest{
-    LoginPage loginPage = new LoginPage(driver);
-    HomePage homePage = new HomePage(driver);
+
     @Test
     public void loginWithCorrectCredentials(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
         loginPage.login();
 
         Assert.assertTrue(homePage.getUserAvatarIcon().isDisplayed());
@@ -21,6 +23,9 @@ public class LoginTests extends BaseTest{
 
     @Test
     public void loginInWithCorrectCredentials(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
         loginPage.provideEmail("AAutku.aktas94@testpro.io");
         loginPage.providePassword("AAekga9uf6");
         loginPage.clickSubmit();
