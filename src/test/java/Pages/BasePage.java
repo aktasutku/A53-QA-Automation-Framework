@@ -14,6 +14,10 @@ public class BasePage {
     WebDriverWait wait;
     Actions actions;
 
+    //Elements
+    By  soundBarVisializer= By.cssSelector("[data-testid = 'sound-bar-play']");
+    By allSongsList = By.cssSelector("li a.songs");
+
     public BasePage(WebDriver givenDriver){
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -22,5 +26,15 @@ public class BasePage {
 
     public WebElement findElementUsingByLocator(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public boolean isSongPlaying(){
+        WebElement soundBarVisualizer = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(soundBarVisializer));
+        return soundBarVisualizer.isDisplayed();
+    }
+
+    public void goToAllSongsList(){
+        findElementUsingByLocator(allSongsList).click();
     }
 }

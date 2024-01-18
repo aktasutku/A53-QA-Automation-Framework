@@ -12,8 +12,16 @@ public class HomePage extends BasePage{
     //Page Locators
     By userAvatarIcon = By.cssSelector("img[class='avatar']");
 
+
+
     //Page Methods
     public WebElement getUserAvatarIcon(){
         return findElementUsingByLocator(userAvatarIcon);
     }
+
+    public WebElement allSongsList (){
+        return findElementUsingByLocator(allSongsList);
+    }
+
+
 }
