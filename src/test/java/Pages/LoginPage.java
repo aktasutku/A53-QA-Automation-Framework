@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class LoginPage extends BasePage{
     public LoginPage(WebDriver givenDriver) {
@@ -19,6 +20,7 @@ public class LoginPage extends BasePage{
 
     @FindBy(css = "[type='submit']")
     WebElement loginButton;
+
 
     // continue here 1.06.34
 
