@@ -12,11 +12,11 @@ public class LoginPage extends BasePage{
     }
 
     //Element Locators using Page Factory
-    @FindBy(css = "type='email'")
+    @FindBy(css = "[type='email']")
     WebElement emailTextField;
 
-    @FindBy(css = "type='password'")
-    WebElement passwordField;
+    @FindBy(css = "[type='password']")
+    WebElement passwordTextField;
 
     @FindBy(css = "[type='submit']")
     WebElement loginButton;
@@ -31,7 +31,22 @@ public class LoginPage extends BasePage{
     By passwordField = By.cssSelector("input[type='password']");
     By submitButton = By.cssSelector("button[type='submit']");
 
-    //Page Methods
+    //Page Methods using Selenium Page Factory
+    public LoginPage provideEmailToLogin(String email){
+        emailTextField.sendKeys(email);
+        return this;
+    }
+    //Page Methods using Selenium Page Factory
+    public LoginPage providePasswordToLogin(String password){
+        passwordTextField.sendKeys(password);
+        return this;
+    }
+    public LoginPage clickSubmitBtnToLogin(){
+        loginButton.click();
+        return this;
+    }
+
+    //Page Methods using POM Pattern
     public void provideEmail(String email){
         findElementUsingByLocator(emailField).sendKeys(email);
     }
